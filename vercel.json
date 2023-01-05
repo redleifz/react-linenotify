@@ -2,23 +2,15 @@
     "version": 2,
     "builds": [
       {
-        "src": "backend/",
-        "use": "@vercel/node",
-        "config": {
-          "main": "server.js"
-        }
-      },
+        "src": "./backend/server.js",
+        "use": "@now/node"
+      }
+    ],
+    "routes": [
       {
-        "src": "frontend/",
-        "use": "@vercel/node",
-        "config": {
-          "main": "node_modules/react-scripts/scripts/start.js",
-          "env": {
-            "BROWSER": "none",
-            "REACT_APP_BACKEND_URL": "@now/backend"
-          }
-        }
+       
+        "src": "/(.*)",
+        "dest": "./backend/server.js"
       }
     ]
   }
-  

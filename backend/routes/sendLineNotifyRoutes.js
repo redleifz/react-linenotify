@@ -20,7 +20,7 @@ sendlinenotifyRouter.post("/sendline", (req, res) => {
         bearer: process.env.LineToken,
       },
       form: {
-        message: `Message from : ${json.name} , Phone Number : ${json.message} , Email : ${json.email} , Subject : ${json.subject} , Message : ${json.message} `,
+        message: `Message from : ${json.name} , Phone Number : ${json.phoneNumber} , Email : ${json.email} , Subject : ${json.subject} , Message : ${json.message} `,
       },
     },
     (err, httpResponse, body) => {

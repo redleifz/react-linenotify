@@ -6,8 +6,12 @@ dotenv.config();
 
 const sendlinenotifyRouter = express.Router();
 
+sendlinenotifyRouter.get("/",(req,res)=>{
+  res.send("get methold at path / ")
+})
+
 sendlinenotifyRouter.post("/sendline", (req, res) => {
-  
+
   let json = req.body;
 
   request(

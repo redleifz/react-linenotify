@@ -3,6 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 
 function App() {
+
+
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
@@ -13,7 +15,7 @@ function App() {
     e.preventDefault();
 
     axios
-      .post("/sendline", {
+      .post(`https://react-linenotify-backend.onrender.com/sendline`, {
         name: name,
         phoneNumber: phoneNumber,
         email: email,
@@ -21,19 +23,16 @@ function App() {
         message: message,
       })
       .then(function (response) {
-       setName('')
-       setPhoneNumber('')
-       setEmail('')
-       setSubject('')
-       setMessage('')
+        setName("");
+        setPhoneNumber("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
         // console.log(response);
       })
       .catch(function (error) {
         console.log(error);
       });
-
-
-    
   };
 
   return (
@@ -82,7 +81,7 @@ function App() {
             <div className="flex flex-col py-2">
               <label className="uppercase text-sm py-2">Subject</label>
               <input
-              value={subject}
+                value={subject}
                 onChange={(e) => {
                   setSubject(e.target.value);
                 }}
@@ -94,7 +93,7 @@ function App() {
             <div className="flex flex-col py-2">
               <label className="uppercase text-sm py-2">Message</label>
               <textarea
-              value={message}
+                value={message}
                 onChange={(e) => {
                   setMessage(e.target.value);
                 }}

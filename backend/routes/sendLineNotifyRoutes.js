@@ -6,11 +6,9 @@ dotenv.config();
 
 const sendlinenotifyRouter = express.Router();
 
-
 sendlinenotifyRouter.post("/sendline", (req, res) => {
- 
-    let json = req.body
- 
+  let json = req.body;
+
   request(
     {
       method: "POST",
@@ -22,13 +20,13 @@ sendlinenotifyRouter.post("/sendline", (req, res) => {
         bearer: process.env.LineToken,
       },
       form: {
-        message: `Message from : ${json.name} , detail : ${json.message} `,
+        message: `Message from : ${json.name} , Phone Number : ${json.message} , Email : ${json.email} , Subject : ${json.subject} , Message : ${json.message} `,
       },
     },
     (err, httpResponse, body) => {
       if (err) {
         console.log(err);
-      
+        res.send(err);
       } else {
         console.log(body);
         res.send(body);
